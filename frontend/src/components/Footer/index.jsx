@@ -1,4 +1,3 @@
-// import iconData from './iconData.json';
 import IconComponent from '../Icons/IconComponent';
 import React, { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";

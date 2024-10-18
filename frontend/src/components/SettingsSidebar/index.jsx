@@ -157,17 +157,6 @@ export default function SettingsSidebar() {
               <div className="h-auto sidebar-items">
                 <div className="flex flex-col gap-y-2 pb-[60px] overflow-y-scroll no-scroll">
                   <SidebarOptions user={user} t={t} />
-                  <div className="h-[1.5px] bg-[#3D4147] mx-3 mt-[14px]" />
-                  <SupportEmail />
-                  <Link
-                    hidden={
-                      user?.hasOwnProperty("role") && user.role !== "admin"
-                    }
-                    to={paths.settings.privacy()}
-                    className="text-darker hover:text-white text-xs leading-[18px] mx-3"
-                  >
-                    {t("settings.privacy")}
-                  </Link>
                 </div>
               </div>
             </div>
@@ -178,32 +167,6 @@ export default function SettingsSidebar() {
         </div>
       </div>
     </>
-  );
-}
-
-function SupportEmail() {
-  const [supportEmail, setSupportEmail] = useState(paths.mailToMintplex());
-  const { t } = useTranslation();
-
-  useEffect(() => {
-    const fetchSupportEmail = async () => {
-      const supportEmail = await System.fetchSupportEmail();
-      setSupportEmail(
-        supportEmail?.email
-          ? `mailto:${supportEmail.email}`
-          : paths.mailToMintplex()
-      );
-    };
-    fetchSupportEmail();
-  }, []);
-
-  return (
-    <Link
-      to={supportEmail}
-      className="text-darker hover:text-white text-xs leading-[18px] mx-3 mt-1"
-    >
-      {t("settings.contact")}
-    </Link>
   );
 }
 
