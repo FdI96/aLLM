@@ -20,42 +20,10 @@ export default function Footer() {
   // to prevent pop-in.
   if (footerData === false) return null;
 
-  if (!Array.isArray(footerData) || footerData.length === 0) {
-    return (
-      <div className="flex justify-center mb-2">
-        <div className="flex space-x-4">
-          {footerData?.map((item) => {
-            return (
-              <ToolTipWrapper key={item.id} id={item.id}>
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="transition-all duration-300 p-2 rounded-full text-white bg-sidebar-button hover:bg-menu-item-selected-gradient hover:border-slate-100 hover:border-opacity-50 border-transparent border"
-                aria-label={item.ariaLabel}
-                data-tooltip-id={item.id}
-                data-tooltip-content={item.tooltip}
-              >
-                <IconComponent
-                  iconName={item.icon}
-                  className="h-5 w-5"
-                />
-              </a>
-            </ToolTipWrapper>
-            )
-            
-          })}
-          {!isMobile && <IconComponent iconName={'SettingsButton'} className="h-5 w-5"  />}
-        </div>
-      </div>
-    );
-  }
-
-
   return (
     <div className="flex justify-center mb-2">
       <div className="flex space-x-4">
-        {footerData.map((item, index) => (
+        {footerData?.map((item, index) => (
           <a
             key={index}
             href={item.url}
