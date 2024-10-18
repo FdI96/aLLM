@@ -48,6 +48,31 @@ export default function Footer() {
       </div>
     </div>
   );
+
+  return (
+    <div className="flex justify-center mb-2">
+      <div className="flex space-x-4">
+        {footerData.map((item, index) => (
+          <a
+            key={index}
+            href={item.url}
+            target="_blank"
+            rel="noreferrer"
+            className="transition-all duration-300 p-2 rounded-full text-white bg-sidebar-button hover:bg-menu-item-selected-gradient hover:border-slate-100 hover:border-opacity-50 border-transparent border"
+          >
+            {React.createElement(
+              ICON_COMPONENTS?.[item.icon] ?? ICON_COMPONENTS.Info,
+              {
+                weight: "fill",
+                className: "h-5 w-5",
+              }
+            )}
+          </a>
+        ))}
+        {!isMobile && <SettingsButton />}
+      </div>
+    </div>
+  );
 }
 
 export function ToolTipWrapper({ id = v4(), children }) {
